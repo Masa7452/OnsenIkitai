@@ -23,8 +23,7 @@ const Layout = ( { params } ) =>
 
 const Header = ( { props } ) => 
 {  
-    const styles = {
-        topHeader: css`
+    const styles = (  ) = css`
             text-align: justify;
         `
     }
