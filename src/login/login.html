@@ -1,0 +1,101 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    form{
+      max-width: 400px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    form > p{
+      text-align: center;
+      font-weight: bold;
+    }
+    form > button{
+      background-color: rgba(45, 45, 45, 0.7);
+      opacity: 0.6;
+      cursor: pointer;
+      height: 2.5rem;
+      border: none;
+    }
+    .container-left > img{
+      position: absolute;
+      top: 2%;
+      left: 5%;
+      width: 50px;
+    }
+    .container{
+      display: flex;
+    }
+    .container-left{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      position: relative;
+    }
+    .container-right{
+      background-color: #C1D6EB;
+      height: 100vh;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+
+    .oke{
+      position: absolute;
+      top: 10%;
+      right: 3%;
+    }
+    .drinkingBoy{
+      position: absolute;
+      bottom: 20%;
+      right: 0;
+    }
+    .cupple {
+      display: block;
+      position: absolute;
+      bottom: 0;
+    }
+    /* -- common -- */
+    input{
+      height: 2rem;
+      margin-top: -30px;
+    }
+  </style>
+  <body>
+    <div>
+      <div class="header"></div>
+      <div class="container">
+        <div class="container-left">
+          <img src="./images/S_ROTEN 1.png" alt="">
+          <form action="POST">
+            <p>Create Account</p>
+            <label for="email">E-mail</label>
+            <input name="email" type="email">
+            <label for="password">Password</label>
+            <input name="password" type="password">
+            <button>Sign Up</button>
+          </form>
+        </div>
+        <div class="container-right">
+          <img class="oke" src="./images/1517142224-1 1.png" alt="" >
+          <img class="onsen" src="./images/1517201512-3 1.png" alt="" style="width: 100%; max-width: 520px; margin-top: 110px;">
+          <img class="cupple" src="./images/1517213657-1 1.png" alt="" style="width: 100%; max-width: 256px; display: block;">
+          <img class="drinkingBoy" src="./images/1538452735-1 1 (1).png" alt="" style="width: 100%; max-width: 250px;">
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
