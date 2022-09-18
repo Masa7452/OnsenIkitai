@@ -1,10 +1,11 @@
 {
   "dependencies": {
+    "@emotion/babel-preset-css-prop": "^11.10.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "gatsby": "^4.22.0",
-    "gatsby-plugin-emotion": "^7.22.0",
-    "gatsby-plugin-image": "^2.22.0",
+    "gatsby": "^4.23.0",
+    "gatsby-plugin-emotion": "^7.23.0",
+    "gatsby-plugin-image": "^2.23.0",
     "nth-check": "^2.1.1",
     "react": "^18.2.0",
     "semantic-ui-css": "^2.4.1",
@@ -16,5 +17,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
+  },
+  "devDependencies": {
+    "babel-preset-gatsby": "^2.23.0"
   }
 }
