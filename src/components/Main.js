@@ -13,7 +13,7 @@ const Layout = ( { params } ) =>
         <div css={params.style}>
             <div className={`top-container`}>
                 <div className={`top-icon`}>
-                    <img src={ OnsenIcon }></img>
+                    <img src={ OnsenIcon } alt="OnsenIcon"></img>
                 </div>
                 <div className={`search-area`}>
                     <ul>
@@ -22,17 +22,17 @@ const Layout = ( { params } ) =>
                             <p>Prefecture</p>
                         </li>
                         <li>
-                            <img src={ Feature } />
+                            <img src={ Feature } alt="Feature"/>
                             <p>Feature</p>
                         </li>
                         <li>
-                            <img src={ Map } />
+                            <img src={ Map } alt="Map"/>
                             <p>Map</p>
                         </li>
                     </ul>
                     <Search
                         className={`input-field`}
-                        placeholder='Search...'
+                        placeholder='Keyword...'
                     />
                 </div>
             </div>
@@ -42,7 +42,7 @@ const Layout = ( { params } ) =>
 
 const Style = ( params ) => css`
     width: 100%;
-    height: 600px;
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,14 +64,19 @@ const Style = ( params ) => css`
 
     .search-area
     {
-        padding-right:40px;
+        // padding-right:40px;
     }
 
     .search-area ul
     {
+        width:100%;
         justify-content: space-between;
         display:flex;
         list-style:none;
+        margin-top:0px;
+        margin-bottom:0px;
+        padding-left:70px;
+        padding-right:70px;
     }
 
     .search-area li
@@ -87,13 +92,14 @@ const Style = ( params ) => css`
 
     .search-area img
     {
-        height:80px;
+        height:50px;
     }
 
     .search-area p
     {
         margin-top:10px;
         text-align:center;
+        font-size:13px;
     }
 
     .input-field
