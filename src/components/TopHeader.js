@@ -10,7 +10,7 @@ const Layout = ( { params } ) =>
         <nav>
             <ul>
               <li>
-                <Link to="/" activeStyle={{color:`black`}}>What is OnsenIkitai</Link>
+                <Link to="/src/login/login.html" >What is OnsenIkitai?</Link>
               </li>
             </ul>
         </nav> 
@@ -19,10 +19,10 @@ const Layout = ( { params } ) =>
         <nav>
           <ul>
             <li>
-              <Link to="/about" activeStyle={{color:`black`}}>Login</Link>
+              <Link to="/src/login/login.html">Login</Link>
             </li>
             <li>
-              <Link to="/about" activeStyle={{color:`black`}}>SignUp</Link>
+              <Link to="/about">SignUp</Link>
             </li>
           </ul>
         </nav>
@@ -35,6 +35,11 @@ const Style = ( params ) => css`
     height     : 60px;
     font-size  : 20px;
     width      :100%;
+
+    a 
+    {
+      color:black;
+    }
 
     ul {
       list-style:none;

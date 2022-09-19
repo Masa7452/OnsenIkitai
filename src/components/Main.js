@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import OnsenIcon from "/src/images/OnsenIcon.svg"
 import { css } from "@emotion/react";
 import Feature from "/src/images/Feature.svg";
 import Map from "/src/images/Map.svg";
 import Prefecture from "/src/images/Prefecture.svg";
 import { Search } from "semantic-ui-react";
-
+import SearchModal from "./modals/SearchModal";
 
 const Layout = ( { params } ) => 
 {
@@ -17,15 +17,27 @@ const Layout = ( { params } ) =>
                 </div>
                 <div className={`search-area`}>
                     <ul>
-                        <li>
+                        <li
+                            onClick={ () => {
+                                params.setSearchMode( `prefecture` );
+                            }}
+                        >
                             <img src={ Prefecture } alt="Prefecture" />
                             <p>Prefecture</p>
                         </li>
-                        <li>
+                        <li
+                            onClick={ () => {
+                                params.setSearchMode( `feature` );
+                            }}
+                        >
                             <img src={ Feature } alt="Feature"/>
                             <p>Feature</p>
                         </li>
-                        <li>
+                        <li
+                            onClick={ () => {
+                                params.setSearchMode( `map` );
+                            }}
+                        >
                             <img src={ Map } alt="Map"/>
                             <p>Map</p>
                         </li>
@@ -36,6 +48,7 @@ const Layout = ( { params } ) =>
                     />
                 </div>
             </div>
+            <SearchModal mode={params.searchMode} setSearchMode={params.setSearchMode} />
         </div>
     )
 }
@@ -115,13 +128,17 @@ const Style = ( params ) => css`
 `;
 
 const Main = ( { props } ) => 
-{  
-    const styleParams=
+{
+    const [ searchMode, setSearchMode ] = useState( `none` );
+
+    const styleParams =
     {
     }
     const params = 
     {
-        style : Style( styleParams ),
+        style             : Style( styleParams ),
+        searchMode        : searchMode,
+        setSearchMode     : setSearchMode,
     }
     return <Layout params={params}  />
 };
