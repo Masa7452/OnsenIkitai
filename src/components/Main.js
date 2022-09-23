@@ -4,8 +4,8 @@ import { css } from "@emotion/react";
 import Feature from "/src/images/Feature.svg";
 import Map from "/src/images/Map.svg";
 import Prefecture from "/src/images/Prefecture.svg";
-import { Search } from "semantic-ui-react";
 import SearchModal from "./modals/SearchModal";
+import SearchBar from "./SearchBar";
 
 const Layout = ( { params } ) => 
 {
@@ -42,10 +42,7 @@ const Layout = ( { params } ) =>
                             <p>Map</p>
                         </li>
                     </ul>
-                    <Search
-                        className={`input-field`}
-                        placeholder='Keyword...'
-                    />
+                    <SearchBar />
                 </div>
             </div>
             <SearchModal mode={params.searchMode} setSearchMode={params.setSearchMode} />
@@ -131,6 +128,11 @@ const Main = ( { props } ) =>
 {
     const [ searchMode, setSearchMode ] = useState( `none` );
 
+    const onSearchChange = () =>
+    {
+        console.log(`サーチチェンジド`);
+    }
+
     const styleParams =
     {
     }
@@ -139,6 +141,7 @@ const Main = ( { props } ) =>
         style             : Style( styleParams ),
         searchMode        : searchMode,
         setSearchMode     : setSearchMode,
+        onSearchChange    : onSearchChange,
     }
     return <Layout params={params}  />
 };
