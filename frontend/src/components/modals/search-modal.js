@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
 import React, { memo } from "react";
-import FeatureModal from "./FeatureModal";
-import MapModal from "./MapModal";
-import PrefectureModal from "./PrefectureModal";
+import FeatureModal from "./feature-modal";
+import MapModal from "./map-modal";
+import PrefectureModal from "./prefecture-modal";
 
 const Layout = ( { params } )=> 
 {

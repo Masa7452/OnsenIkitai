@@ -10,7 +10,7 @@ const Layout = ( { params } ) =>
         <nav>
             <ul>
               <li>
-                <Link to="/src/login/login.html" >What is OnsenIkitai?</Link>
+                <Link to="/src/login/login.html" >What is OnsenIkitai？</Link>
               </li>
             </ul>
         </nav> 
@@ -72,7 +72,7 @@ const Style = ( params ) => css`
     }
 `
 
-const TopHeader = ( { props } ) => 
+const Header = ( { props } ) => 
 {  
     const styleParams=
     {
@@ -84,4 +84,4 @@ const TopHeader = ( { props } ) =>
     return <Layout params={params}  />
 };
 
-export default TopHeader;
+export default Header;

@@ -4,8 +4,10 @@ import { css } from "@emotion/react";
 import Feature from "/src/images/Feature.svg";
 import Map from "/src/images/Map.svg";
 import Prefecture from "/src/images/Prefecture.svg";
-import SearchModal from "./modals/SearchModal";
-import SearchBar from "./SearchBar";
+import SearchModal from "./modals/search-modal";
+import SearchBar from "./search-bar";
+import { navigate } from "gatsby";
+import { Button } from "semantic-ui-react";
 
 const Layout = ( { params } ) => 
 {
@@ -41,6 +43,13 @@ const Layout = ( { params } ) =>
                             <img src={ Map } alt="Map"/>
                             <p>Map</p>
                         </li>
+                        <Button
+                            onClick={() =>{
+                                navigate(`onsen-detail`);
+                            }}  
+                        >
+                            詳細画面へ
+                        </Button>
                     </ul>
                     <SearchBar />
                 </div>
@@ -128,11 +137,6 @@ const Main = ( { props } ) =>
 {
     const [ searchMode, setSearchMode ] = useState( `none` );
 
-    const onSearchChange = () =>
-    {
-        console.log(`サーチチェンジド`);
-    }
-
     const styleParams =
     {
     }
@@ -141,7 +145,6 @@ const Main = ( { props } ) =>
         style             : Style( styleParams ),
         searchMode        : searchMode,
         setSearchMode     : setSearchMode,
-        onSearchChange    : onSearchChange,
     }
     return <Layout params={params}  />
 };
