@@ -1,13 +1,13 @@
 import React from "react";
-import TopHeader from "./TopHeader";
-import Main from "./Main";
+import Header from "../components/Header";
+import Main from "../components/Main";
 import { css } from "@emotion/react";
 
 const Layout = ( { params } ) =>
 {
     return (
         <div css={params.style}>
-            <TopHeader />
+            <Header />
             <Main pageTitle={`Gatsby Site`} />
         </div>
     );
@@ -16,7 +16,7 @@ const Layout = ( { params } ) =>
 const Style = ( params ) => css`
 `;
 
-const TopPage = ( { props } ) => 
+const Top = ( { props } ) => 
 {  
     const styleParams=
     {
@@ -28,4 +28,4 @@ const TopPage = ( { props } ) =>
     return <Layout params={params}  />
 };
 
-export default TopPage;
+export default Top;

@@ -1,7 +1,7 @@
 import { navigate } from "gatsby";
 import React, { useRef } from "react";
 import { Search } from "semantic-ui-react";
-import { getOnsenList } from "../../firebase/utility";
+import { getOnsenList } from "../firebase/utility";
 
 const SearchBar = ( props ) => 
 {

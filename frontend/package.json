@@ -1,12 +1,18 @@
 {
   "dependencies": {
+    "@apollo/client": "^3.7.0",
+    "@apollo/react-hooks": "^4.0.0",
     "@emotion/babel-preset-css-prop": "^11.10.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "apollo-boost": "^0.4.9",
     "firebase": "^9.10.0",
     "gatsby": "^4.23.0",
+    "gatsby-plugin-apollo": "^4.0.2",
     "gatsby-plugin-emotion": "^7.23.0",
     "gatsby-plugin-image": "^2.23.0",
+    "graphql": "^15.8.0",
+    "isomorphic-fetch": "^3.0.0",
     "nth-check": "^2.1.1",
     "react": "^18.2.0",
     "react-router-dom": "^6.4.1",
