@@ -1,3 +1,5 @@
-node_modules
-public
-.cache
+front/node_modules
+front/public
+front/.cache
+
+backend/node_modules
