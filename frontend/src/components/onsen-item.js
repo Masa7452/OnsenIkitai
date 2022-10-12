@@ -1,11 +1,12 @@
 import React from "react";
 import { css } from "@emotion/react";
 import OnsenImage from "/src/images/onsenImage.png";
+import { navigate } from "gatsby";
 
 const Layout = ( { params } ) => 
 {
     return (
-        <div css={params.style}>
+        <div css={params.style} onClick={() => { navigate( `/detail` ); }}>
             <div>
                 <img className={`item-image`} src={OnsenImage} />
             </div>
@@ -28,11 +29,8 @@ const Style = ( params ) => css`
     padding: 20px 0;
     justify-content: start;
     display:flex;
+    cursor:pointer;
 
-    .item-detail-image
-    {
-
-    }
     .item-detail
     {
         width:60%;
@@ -49,7 +47,7 @@ const Style = ( params ) => css`
     }
 `;
 
-const OnsenList = ( { props } ) => 
+const OnsenItem = ( { props } ) => 
 {
     const styleParams =
     {
@@ -61,4 +59,4 @@ const OnsenList = ( { props } ) =>
     return <Layout params={params}  />
 };
 
-export default OnsenList;
+export default OnsenItem;
