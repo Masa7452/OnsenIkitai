@@ -35,6 +35,7 @@ const Style = ( params ) => css`
     background: #fff;
     box-sizing: border-box;
     text-align:center;
+    margin-bottom:40px;
 
     .l-content-search
     {

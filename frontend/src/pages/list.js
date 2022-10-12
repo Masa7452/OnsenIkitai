@@ -2,7 +2,7 @@ import React from "react";
 import { css } from "@emotion/react";
 import Header from "../components/header";
 import SearchArea from "../components/search-area";
-import OnsenList from "./onsen-list";
+import OnsenList from "../components/onsen-list";
 
 const Layout = ( { params } )=> 
 {
@@ -11,6 +11,20 @@ const Layout = ( { params } )=>
             <Header />
             <div className={`l-containers`}>
                 <SearchArea />
+                <div className={`select-area`}>
+                    <div className={`result`}>
+                        Result
+                    </div>
+                    <div className={`order`}>
+                        <div class="ui simple dropdown">
+                                popular <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <div class="item">new</div>
+                                <div class="item">recomend</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <OnsenList />
             </div>
         </div>
@@ -28,6 +42,21 @@ const Style = ( params ) => css`
         width: 850px;
         margin-right: auto;
         margin-left: auto;
+    }
+    .select-area
+    {
+        display:flex;
+        justify-content: space-between;
+    }
+    .result
+    {
+        margin-left:15px;
+        font-size:20px;
+    }
+    .order
+    {
+        margin-right:15px;
+        font-size:15px;
     }
 `;
 
