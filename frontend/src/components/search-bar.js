@@ -17,7 +17,7 @@ const SearchBar = ( props ) =>
                     const params = { prefecture : `Aichi` };
                     const result = await getOnsenList( params );
 
-                    navigate(`/search`, { state : { text : inputText.current, onsenList : result } });
+                    navigate(`/list`, { state : { text : inputText.current, onsenList : result } });
                 }
             }}
             onSearchChange={( e, data ) => {

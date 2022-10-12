@@ -8,7 +8,7 @@ const Layout = ( { params } ) =>
     return (
         <div css={params.style}>
             <Header />
-            <Main pageTitle={`Gatsby Site`} />
+            <Main />
         </div>
     );
 }

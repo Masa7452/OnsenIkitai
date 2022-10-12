@@ -5,7 +5,6 @@ import client from "../client";
 import { ApolloProvider } from "@apollo/client";
 
 const IndexPage = () => {
-  console.log(client);
   return (
     <ApolloProvider client={client}>
       <Top />
