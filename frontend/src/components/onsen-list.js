@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "@emotion/react";
-import OnsenItem from "../components/modals/onsen-item";
+import OnsenItem from "./onsen-item";
 
 const Layout = ( { params } ) => 
 {
@@ -16,7 +16,7 @@ const Layout = ( { params } ) =>
 
 const Style = ( params ) => css`
     // border-bottom: 1px solid #eee;
-    margin-top :100px;
+    margin-top:5px;
 
     .onsen-list
     {
