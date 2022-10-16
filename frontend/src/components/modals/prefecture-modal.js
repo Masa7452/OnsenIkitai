@@ -6,6 +6,7 @@ const Layout = ( { params } )=>
 {
     return (
         <Modal
+            className={`prefecture`}
             open={params.isOpen}
             onClose={() => params.onClose()}
             // onOpen={() => setOpen(true)}
@@ -17,6 +18,11 @@ const Layout = ( { params } )=>
 }
 
 const Style = ( params ) => css`
+    .prefecture
+    {
+        width:500px;
+        background-color:blue;
+    }
 `;
 
 const PrefectureModal = memo(( props ) => 

@@ -11,18 +11,18 @@ export const getPrefectureCollection = async ( prefecture ) =>
 export const getOnsenList = async ( params ) =>
 {
     // try {
-        console.log(`getFirestoreData`);
-        const prefectureCollection = await getPrefectureCollection( params.prefecture );
-        const querySnapshot        = await getDocs( prefectureCollection );
-        const data = [];
-        querySnapshot.forEach((doc) => {
-            data.push( doc.data() );
-        });
+        // console.log(`getFirestoreData`);
+        // const prefectureCollection = await getPrefectureCollection( params.prefecture );
+        // const querySnapshot        = await getDocs( prefectureCollection );
+        // const data = [];
+        // querySnapshot.forEach((doc) => {
+        //     data.push( doc.data() );
+        // });
     // } catch (error) {
     //     console.log(error);
     // }
     
-    return data;
+    // return data;
 };
 
 export const addNewOnsen = async ( params ) =>

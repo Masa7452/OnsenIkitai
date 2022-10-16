@@ -19,7 +19,7 @@ const Layout = ( { params } ) =>
         <nav>
           <ul>
             <li>
-              <Link to="/src/login/login.html">Login</Link>
+              <Link to="/login">Login</Link>
             </li>
             <li>
               <Link to="/about">SignUp</Link>

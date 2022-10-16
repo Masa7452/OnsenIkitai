@@ -60,7 +60,7 @@ const Style = ( params ) => css`
     }
 `;
 
-const OnsenDetail = ( props ) => 
+const List = ( props ) => 
 {
     const styleParams=
     {
@@ -76,4 +76,4 @@ const OnsenDetail = ( props ) =>
     )
 };
 
-export default OnsenDetail;
+export default List;
