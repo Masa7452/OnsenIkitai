@@ -10,7 +10,7 @@ const Layout = ( { params } ) =>
                 <h1>Momoyama no yu（桃山の湯）</h1>
                 <p>Aichi Nagoya Tempaku </p>
                 <div className={`detail-image`}>
-                    <image src={OnsenImage} alt="OnsenImage" />
+                    <img src={OnsenImage} alt="OnsenImage" />
                 </div>
                 <div className={`detail-container`} >
                     <div className={`detail-container-menu`} >
@@ -78,6 +78,10 @@ height: 100vh;
     background: #FFF;
     padding: 25px;
     height: 100%;
+    
+    .detail-image{
+        text-align:center;
+    }
 
     .detail-container{
         width: 550px;

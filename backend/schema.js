@@ -1,15 +1,13 @@
-import { gql } from "apollo-server"
+const { gql } = require("apollo-server-express")
 
 const typeDefs = gql`
-    type Book {
-        title: String
-        author: String
-        publish: String
-    }
 
     type Query {
-        test : [Book]
+        getBooksList( params: String! ) : [BooksResponse],
+    }
+    type BooksResponse {
+        title: String!
+        author: String!
     }
 `
-
-export default typeDefs;
+module.exports = typeDefs;

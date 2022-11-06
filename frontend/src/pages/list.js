@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { css } from "@emotion/react";
-import Header from "../components/header";
-import SearchArea from "../components/search-area";
-import OnsenList from "../components/onsen-list";
+import Header from "../components/common/header";
+import SearchArea from "../components/top/search-area";
+import OnsenList from "../components/list/onsen-list";
+import { gql } from "@apollo/client";
+import { requestQueryGraphql } from "../../utility";
+
+const BOOKS = gql`
+    query ($params: String!) {
+        getBooksList( params: $params ) {
+            title
+            author
+        }
+    }
+`
 
 const Layout = ( { params } )=> 
 {
@@ -16,13 +27,13 @@ const Layout = ( { params } )=>
                         Result
                     </div>
                     <div className={`order`}>
-                        <div class="ui simple dropdown">
+                        {/* <div class="ui simple dropdown">
                                 popular <i class="dropdown icon"></i>
                             <div class="menu">
                                 <div class="item">new</div>
                                 <div class="item">recomend</div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <OnsenList />
@@ -62,9 +73,16 @@ const Style = ( params ) => css`
 
 const List = ( props ) => 
 {
+    const fn = useCallback( async () =>
+    {
+        const params_ = { id: 1, name: '太郎' };
+        const result = await requestQueryGraphql( BOOKS, params_ );
+        console.log(result);
+    }, []);
+    fn();
+
     const styleParams=
     {
-        
     }
 
     const params = 
