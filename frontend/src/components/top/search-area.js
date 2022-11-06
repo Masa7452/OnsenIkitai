@@ -4,7 +4,7 @@ import Feature from "/src/images/Feature.svg";
 import Prefecture from "/src/images/Prefecture.svg";
 import { Icon } from "semantic-ui-react";
 import SearchBar from "./search-bar";
-import SearchModal from "./modals/search-modal";
+import SearchModal from "../modals/search-modal";
 
 const Layout = ( { params } ) => 
 {

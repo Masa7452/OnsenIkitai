@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 import Feature from "/src/images/Feature.svg";
 import Map from "/src/images/Map.svg";
 import Prefecture from "/src/images/Prefecture.svg";
-import SearchModal from "./modals/search-modal";
+import SearchModal from "../modals/search-modal";
 import SearchBar from "./search-bar";
 
 const Layout = ( { params } ) => 

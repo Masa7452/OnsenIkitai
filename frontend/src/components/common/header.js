@@ -10,7 +10,10 @@ const Layout = ( { params } ) =>
         <nav>
             <ul>
               <li>
-                <Link to="/src/login/login.html" >What is OnsenIkitai？</Link>
+                <Link to="" >What is OnsenIkitai？</Link>
+              </li>
+              <li>
+                <Link to="/register" >Register Onsen</Link>
               </li>
             </ul>
         </nav> 
@@ -33,7 +36,7 @@ const Layout = ( { params } ) =>
 
 const Style = ( params ) => css`
     height     : 60px;
-    font-size  : 20px;
+    font-size  : 16px;
     width      :100%;
 
     a 
@@ -54,6 +57,16 @@ const Style = ( params ) => css`
     {
       float  :right;
       margin-right: 20px;
+    }
+
+    .left-menu ul
+    {
+      display:flex;
+    }
+
+    .left-menu li
+    {
+      margin-right:20px;
     }
 
     .right-menu ul
