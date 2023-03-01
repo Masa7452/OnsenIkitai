@@ -1,8 +1,45 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { css } from "@emotion/react";
-import Header from "../components/header";
-import SearchArea from "../components/search-area";
-import OnsenList from "../components/onsen-list";
+import Header from "../components/common/header";
+import OnsenList from "../components/list/onsen-list";
+import Page from "./page";
+import SearchArea from "../components/common/search-area";
+import { useMount, useUpdate } from "react-use";
+import store from "../redux/store";
+import { gql } from "@apollo/client";
+import { requestQueryGraphql } from "../misc/utility";
+import { useLocalState } from "../hook/use-local-state";
+
+const queryListOnsen = gql`
+    query listOnsen ($params: String!) {
+        listOnsen( params: $params ) {
+            status
+            {
+                code
+                message
+                api
+                error
+            }
+            body
+            {
+                rating        
+                area    
+                postNumber    
+                availableType 
+                reasonOfRating
+                minimumFee    
+                onsenName     
+                address1      
+                address2      
+                address3      
+                url           
+                isSauna       
+                tatooStatus   
+                created       
+            }
+        }
+    }
+`
 
 const Layout = ( { params } )=> 
 {
@@ -16,16 +53,16 @@ const Layout = ( { params } )=>
                         Result
                     </div>
                     <div className={`order`}>
-                        <div class="ui simple dropdown">
+                        {/* <div class="ui simple dropdown">
                                 popular <i class="dropdown icon"></i>
                             <div class="menu">
                                 <div class="item">new</div>
                                 <div class="item">recomend</div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
-                <OnsenList />
+                <OnsenList items={params.items} />
             </div>
         </div>
     );
@@ -60,20 +97,47 @@ const Style = ( params ) => css`
     }
 `;
 
-const OnsenDetail = ( props ) => 
+const List = ( props ) => 
 {
+    const state = useLocalState(
+    {
+        items : [],    
+    });
+    const update = useUpdate();
     const styleParams=
     {
-        
     }
-
+    const requestLoadItems = useCallback( async () =>
+    {
+        const quriteria = store.getState().searchCriteria;
+        const params = 
+        {
+            features    : quriteria.features,
+            keyword     : quriteria.keyWord,
+            areas       : quriteria.areas,
+        }
+        const result = await requestQueryGraphql( queryListOnsen, `listOnsen`, params );
+        if( result.length === 0 )
+        {
+            return;
+        }
+        state.items = result;
+        update();
+    })
     const params = 
     {
-        style   : Style( styleParams ),
+        style : Style( styleParams ),
+        items : state.items,
     }
+    useMount( () =>
+    {
+        // ロードする処理
+        requestLoadItems();
+    });
     return (
-        <Layout params={params}  />
+        <Page>
+            <Layout params={params}  />
+        </Page> 
     )
 };
-
-export default OnsenDetail;
+export default List;

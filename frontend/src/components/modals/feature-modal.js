@@ -15,148 +15,107 @@ const Layout = ( { params } )=>
             <div css={params.style}>
                 <div className={`prefecture-modal-body`}>
                     <div className={`prefecture-modal-item`} >
-                        <h3 className={`prefecture-modal-item-head`}>性別</h3>
+                        <h3 className={`prefecture-modal-item-head`}>Sex</h3>
                         <div className={`prefecture-modal-item-body`}>
                             <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_01' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_01'>男性が入れる</label>
+                                <label htmlFor='lb_area_01'>Man</label>
                             </div>
                             <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_02' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_02'>女性が入れる</label>
+                                <label htmlFor='lb_area_02'>Woman</label>
                             </div>
                         </div>
                     </div>
                     <div className={`prefecture-modal-item`} >
-                        <h3 className={`prefecture-modal-item-head`}>男女で入れる</h3>
-                        <div className={`prefecture-modal-item-body`}>
-                           <div className={`prefecture-checkbox`}>
-                                <input id='lb_area_03' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_03'>裸で入れる</label>
-                            </div>
-                            <div className={`prefecture-checkbox`}>
-                                <input id='lb_area_04' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_04'>水着着用</label>
-                            </div>
-                            <div className={`prefecture-checkbox`}>
-                                <input id='lb_area_05' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_05'>館内着</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={`prefecture-modal-item`} >
-                        <h3 className={`prefecture-modal-item-head`}>施設タイプ</h3>
+                        <h3 className={`prefecture-modal-item-head`}>Facility type</h3>
                         <div className={`prefecture-modal-item-body`}>
                         <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_06' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_06'>温泉施設</label>
+                                <label htmlFor='lb_area_06'>Onsen</label>
                             </div>
                             <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_07' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_07'>銭湯</label>
+                                <label htmlFor='lb_area_07'>Sento</label>
                             </div>
                             <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_08' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_08'>ホテル・旅館</label>
+                                <label htmlFor='lb_area_08'>Hotel・Ryokan</label>
                             </div>
                             <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_09' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_09'>カプセルホテル</label>
+                                <label htmlFor='lb_area_09'>Capusel Hotel</label>
                             </div>
                             <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_10' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_10'>ゴルフ場</label>
+                                <label htmlFor='lb_area_10'>Golf plae</label>
                             </div>
                             <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_11' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_11'>スポーツジム</label>
+                                <label htmlFor='lb_area_11'>Sports gym</label>
                             </div>
                             <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_12' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_12'>プライベートサウナ</label>
+                                <label htmlFor='lb_area_12'>Private sauna</label>
                             </div>
                             <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_13' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_13'>キャンプ場</label>
-                            </div>
-                            <div className={`prefecture-checkbox`}>
-                                <input id='lb_area_14' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_14'>ラブホテル</label>
-                            </div>                            
+                                <label htmlFor='lb_area_13'>Campground</label>
+                            </div>                           
                             <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_15' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_15'>その他</label>
+                                <label htmlFor='lb_area_15'>Others</label>
                             </div>
 
                         </div>
                     </div>
                     <div className={`prefecture-modal-item`} >
-                        <h3 className={`prefecture-modal-item-head`}>利用タイプ</h3>
+                        <h3 className={`prefecture-modal-item-head`}>Available type</h3>
                         <div className={`prefecture-modal-item-body`}>
                             <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_21' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_21'>日帰り入浴可</label>
+                                <label htmlFor='lb_area_21'>Available day trip</label>
                             </div>
                             <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_22' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_22'>宿泊者のみ</label>
+                                <label htmlFor='lb_area_22'>Only guest</label>
                             </div>
                             <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_23' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_23'>会員のみ</label>
+                                <label htmlFor='lb_area_23'>Only memeber</label>
                             </div>
                         </div>
                     </div>        
                     <div className={`prefecture-modal-item`} >
-                        <h3 className={`prefecture-modal-item-head`}>サウナタイプ</h3>
+                        <h3 className={`prefecture-modal-item-head`}>Having sauna</h3>
                         <div className={`prefecture-modal-item-body`}>
-                        <div className={`prefecture-checkbox`}>
+                            <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_24' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_24'>ドライサウナ</label>
+                                <label htmlFor='lb_area_24'>Yes</label>
                             </div>
                             <div className={`prefecture-checkbox`}>
                                 <input id='lb_area_25' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_25'>塩サウナ</label>
-                            </div>
-                            <div className={`prefecture-checkbox`}>
-                                <input id='lb_area_26' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_26'>スチームサウナ</label>
-                            </div>
-                            <div className={`prefecture-checkbox`}>
-                                <input id='lb_area_27' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_27'>ミストサウナ</label>
-                            </div>
-                            <div className={`prefecture-checkbox`}>
-                                <input id='lb_area_28' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_28'>薬草サウナ</label>
-                            </div>
-                            <div className={`prefecture-checkbox`}>
-                                <input id='lb_area_29' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_29'>韓国式サウナ</label>
+                                <label htmlFor='lb_area_25'>No</label>
                             </div>
                         </div>
                     </div>
                     <div className={`prefecture-modal-item`} >
-                        <h3 className={`prefecture-modal-item-head`}>ストーブタイプ</h3>
+                        <h3 className={`prefecture-modal-item-head`}>Tattoos allowed</h3>
                         <div className={`prefecture-modal-item-body`}>
-                            <div className={`prefecture-checkbox`}>
-                                <input id='lb_area_30' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_30'>遠赤外線型</label>
+                        <div className={`prefecture-checkbox`}>
+                                <input id='lb_area_24' name='prefecture' type='checkbox'></input>
+                                <label htmlFor='lb_area_24'>Yes</label>
                             </div>
                             <div className={`prefecture-checkbox`}>
-                                <input id='lb_area_31' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_31'>対流型</label>
+                                <input id='lb_area_25' name='prefecture' type='checkbox'></input>
+                                <label htmlFor='lb_area_25'>No</label>
                             </div>
-                            <div className={`prefecture-checkbox`}>
-                                <input id='lb_area_32' name='prefecture' type='checkbox'></input>
-                                <label for='lb_area_32'>格納式</label>
-                            </div>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
                 <div className={`prefecture-modal-button`} >
                     <a className={`prefecture-modal-button-sumbit`} >
-                      <span>このエリアで絞り込む</span>
+                      <span>Search by feature</span>
                     </a>
                 </div> 
             </div>
@@ -201,8 +160,10 @@ height: 80vh;
         padding: 15px 0 20px;
         border-bottom: 1px solid #eee;
         
-        .prefecture-modal-item-head{
+        .prefecture-modal-item-head
+        {
             flex-basis: 15%;
+            margin-top:10px;
         }
     
         .prefecture-modal-item-body{
@@ -210,7 +171,6 @@ height: 80vh;
             flex-wrap: wrap;
             padding: 0 0 0 20px;
             flex-basis: 85%;
-
 
             .prefecture-checkbox{
                 display: flex;

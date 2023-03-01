@@ -19,6 +19,11 @@ export const getFirestoreDb = () =>
     return db;
 }
 
+export const InitializeFirebaseApp = () => 
+{
+  initializeApp( firebaseConfig );
+}
+
 
 
 

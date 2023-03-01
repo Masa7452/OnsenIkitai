@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import OnsenIcon from "/src/images/OnsenIcon.svg"
 import { css } from "@emotion/react";
 import Feature from "/src/images/Feature.svg";
-import Map from "/src/images/Map.svg";
-import Prefecture from "/src/images/Prefecture.svg";
-import SearchModal from "./modals/search-modal";
-import SearchBar from "./search-bar";
+import Tokyo from "/src/images/tokyo.png";
+import Keyword from "/src/images/keyword.png";
+import SearchModal from "../modals/search-modal";
+import SearchBar from "../common/search-bar";
 
 const Layout = ( { params } ) => 
 {
@@ -17,13 +17,21 @@ const Layout = ( { params } ) =>
                 </div>
                 <div className={`search-area`}>
                     <ul>
-                        <li
+                         <li
                             onClick={ () => {
-                                params.setSearchMode( `prefecture` );
+                                // params.setSearchMode( `area` );
                             }}
                         >
-                            <img src={ Prefecture } alt="Prefecture" />
-                            <p>Prefecture</p>
+                            <img src={ Keyword } alt="Keyword" />
+                            <p>Keyword</p>
+                        </li>
+                        <li
+                            onClick={ () => {
+                                params.setSearchMode( `area` );
+                            }}
+                        >
+                            <img src={ Tokyo } alt="Tokyo" />
+                            <p>Area</p>
                         </li>
                         <li
                             onClick={ () => {
@@ -32,14 +40,6 @@ const Layout = ( { params } ) =>
                         >
                             <img src={ Feature } alt="Feature"/>
                             <p>Feature</p>
-                        </li>
-                        <li
-                            onClick={ () => {
-                                params.setSearchMode( `map` );
-                            }}
-                        >
-                            <img src={ Map } alt="Map"/>
-                            <p>Map</p>
                         </li>
                     </ul>
                     <SearchBar />

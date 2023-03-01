@@ -1,14 +1,20 @@
 import React from "react";
 import { css } from "@emotion/react";
 import OnsenItem from "./onsen-item";
+import { useMount } from "react-use";
+import { useLocalState } from "../../hook/use-local-state";
 
 const Layout = ( { params } ) => 
 {
     return (
         <div css={params.style}>
             <div className={`onsen-list`}>
-                <OnsenItem />
-                <OnsenItem />
+                {
+                    params.items.map( ( item, index ) =>
+                    {
+                        return <OnsenItem key={index} item={item} />;
+                    })
+                }
             </div>
         </div>
     )
@@ -27,15 +33,23 @@ const Style = ( params ) => css`
     }
 `;
 
-const OnsenList = ( { props } ) => 
+const OnsenList = ( props ) => 
 {
+    const state = useLocalState(
+    {
+        items: props.items,
+    });
     const styleParams =
     {
     }
     const params = 
     {
-        style         : Style( styleParams ),
+        style : Style( styleParams ),
+        items : props.items,
     }
+    useMount( () =>
+    {
+    })
     return <Layout params={params}  />
 };
 

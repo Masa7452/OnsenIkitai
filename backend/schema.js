@@ -1,15 +1,46 @@
-import { gql } from "apollo-server"
+const { gql } = require("apollo-server-express")
 
 const typeDefs = gql`
-    type Book {
-        title: String
-        author: String
-        publish: String
-    }
+    scalar Dateime
 
     type Query {
-        test : [Book]
+        listOnsen( params: String! ) : ListOnsenResponse,
+    }
+    type Mutation {
+        addOnsen( params: String! ) : MutationResponse,
+    }
+    type Status
+    {
+        code    : Int!
+        message : String!
+        error   : String!
+        api     : String!
+    }
+    type MutationResponse
+    {
+        status  : Status!
+    }
+    type ListOnsenResponse
+    {
+        status  : Status!
+        body    : [OnsenResponse]!
+    }
+    type OnsenResponse
+    {
+        rating         : Int!
+        area           : String!
+        postNumber     : String!
+        availableType  : Int!
+        reasonOfRating : String!
+        minimumFee     : Int!
+        onsenName      : String!
+        address1       : String!
+        address2       : String!
+        address3       : String!
+        url            : String!
+        isSauna        : Int!
+        tatooStatus    : Int!
+        created        : Dateime!
     }
 `
-
-export default typeDefs;
+module.exports = typeDefs;

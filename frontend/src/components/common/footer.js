@@ -6,34 +6,13 @@ const Layout = ( { params } ) =>
 {
   return (
     <div css={params.style}>
-      <div className={`left-menu`}>
-        <nav>
-            <ul>
-              <li>
-                <Link to="/src/login/login.html" >What is OnsenIkitai？</Link>
-              </li>
-            </ul>
-        </nav> 
-      </div>
-      <div className={`right-menu`}>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/src/login/login.html">Login</Link>
-            </li>
-            <li>
-              <Link to="/about">SignUp</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
     </div>
   )
 }
 
 const Style = ( params ) => css`
     height     : 60px;
-    font-size  : 20px;
+    font-size  : 16px;
     width      :100%;
 
     a 
@@ -56,6 +35,16 @@ const Style = ( params ) => css`
       margin-right: 20px;
     }
 
+    .left-menu ul
+    {
+      display:flex;
+    }
+
+    .left-menu li
+    {
+      margin-right:20px;
+    }
+
     .right-menu ul
     {
       display:flex;
@@ -72,7 +61,7 @@ const Style = ( params ) => css`
     }
 `
 
-const Header = ( { props } ) => 
+const Footer = ( { props } ) => 
 {  
     const styleParams=
     {
@@ -84,4 +73,4 @@ const Header = ( { props } ) =>
     return <Layout params={params}  />
 };
 
-export default Header;
+export default Footer;

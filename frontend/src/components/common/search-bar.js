@@ -1,28 +1,33 @@
 import { navigate } from "gatsby";
-import React, { useRef } from "react";
+import React, { useCallback, useRef } from "react";
 import { Search } from "semantic-ui-react";
-import { getOnsenList } from "../firebase/utility";
+import { updateKeyword } from "../../redux/reducer/search-criteria";
+import store from "../../redux/store";
+
 
 const SearchBar = ( props ) => 
 {
     const inputText = useRef(``);
+    const onKeyPressSearch = useCallback( async() => 
+    {
+        navigate(`/list`, { state : { text : inputText.current } });
+    }, []);
     return (
         <Search
+            defaultOpen={true}
             className={`input-field`}
             placeholder='Keyword...'
             onKeyPress={async (e, data) => {
                 if( e.code === `Enter` )
                 {
-                    // await addNewOnsen();
-                    const params = { prefecture : `Aichi` };
-                    const result = await getOnsenList( params );
-
-                    navigate(`/list`, { state : { text : inputText.current, onsenList : result } });
+                    onKeyPressSearch();
                 }
             }}
             onSearchChange={( e, data ) => {
+                store.dispatch( updateKeyword( data.value ) );
                 inputText.current = data.value;
             }}
+            showNoResults={false}
         />
     )
 };

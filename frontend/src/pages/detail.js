@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "@emotion/react";
 import OnsenImage from "../images/onsenImage.png";
+import Page from "./page";
 
 const Layout = ( { params } ) =>
 {
@@ -10,7 +11,7 @@ const Layout = ( { params } ) =>
                 <h1>Momoyama no yu（桃山の湯）</h1>
                 <p>Aichi Nagoya Tempaku </p>
                 <div className={`detail-image`}>
-                    <image src={OnsenImage} alt="OnsenImage" />
+                    <img src={OnsenImage} alt="OnsenImage" />
                 </div>
                 <div className={`detail-container`} >
                     <div className={`detail-container-menu`} >
@@ -78,6 +79,10 @@ height: 100vh;
     background: #FFF;
     padding: 25px;
     height: 100%;
+    
+    .detail-image{
+        text-align:center;
+    }
 
     .detail-container{
         width: 550px;
@@ -133,7 +138,11 @@ const Detail = ( { props } ) =>
     {
         style : Style( styleParams ),
     }
-    return <Layout params={params}  />
+    return (
+        <Page>
+            <Layout params={params}  />
+        </Page> 
+    )
 };
 
 export default Detail;
