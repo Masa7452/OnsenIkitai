@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "@emotion/react";
 import OnsenImage from "../images/onsenImage.png";
+import Page from "./page";
 
 const Layout = ( { params } ) =>
 {
@@ -137,7 +138,11 @@ const Detail = ( { props } ) =>
     {
         style : Style( styleParams ),
     }
-    return <Layout params={params}  />
+    return (
+        <Page>
+            <Layout params={params}  />
+        </Page> 
+    )
 };
 
 export default Detail;

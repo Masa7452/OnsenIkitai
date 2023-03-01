@@ -2,6 +2,8 @@ import React from "react";
 import Header from "../components/common/header";
 import Main from "../components/top/main";
 import { css } from "@emotion/react";
+import Page from "./page";
+import { getAuth } from "firebase/auth";
 
 const Layout = ( { params } ) =>
 {
@@ -17,7 +19,7 @@ const Style = ( params ) => css`
 `;
 
 const Top = ( { props } ) => 
-{  
+{
     const styleParams=
     {
     }
@@ -25,7 +27,11 @@ const Top = ( { props } ) =>
     {
         style : Style( styleParams ),
     }
-    return <Layout params={params}  />
+    return (
+        <Page>
+            <Layout params={params}  />
+        </Page> 
+    )
 };
 
 export default Top;

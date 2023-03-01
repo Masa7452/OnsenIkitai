@@ -1,16 +1,42 @@
 import React, { useCallback } from "react";
 import { css } from "@emotion/react";
 import Header from "../components/common/header";
-import SearchArea from "../components/top/search-area";
 import OnsenList from "../components/list/onsen-list";
+import Page from "./page";
+import SearchArea from "../components/common/search-area";
+import { useMount, useUpdate } from "react-use";
+import store from "../redux/store";
 import { gql } from "@apollo/client";
-import { requestQueryGraphql } from "../../utility";
+import { requestQueryGraphql } from "../misc/utility";
+import { useLocalState } from "../hook/use-local-state";
 
-const BOOKS = gql`
-    query ($params: String!) {
-        getBooksList( params: $params ) {
-            title
-            author
+const queryListOnsen = gql`
+    query listOnsen ($params: String!) {
+        listOnsen( params: $params ) {
+            status
+            {
+                code
+                message
+                api
+                error
+            }
+            body
+            {
+                rating        
+                area    
+                postNumber    
+                availableType 
+                reasonOfRating
+                minimumFee    
+                onsenName     
+                address1      
+                address2      
+                address3      
+                url           
+                isSauna       
+                tatooStatus   
+                created       
+            }
         }
     }
 `
@@ -36,7 +62,7 @@ const Layout = ( { params } )=>
                         </div> */}
                     </div>
                 </div>
-                <OnsenList />
+                <OnsenList items={params.items} />
             </div>
         </div>
     );
@@ -73,25 +99,45 @@ const Style = ( params ) => css`
 
 const List = ( props ) => 
 {
-    const fn = useCallback( async () =>
+    const state = useLocalState(
     {
-        const params_ = { id: 1, name: '太郎' };
-        const result = await requestQueryGraphql( BOOKS, params_ );
-        console.log(result);
-    }, []);
-    fn();
-
+        items : [],    
+    });
+    const update = useUpdate();
     const styleParams=
     {
     }
-
+    const requestLoadItems = useCallback( async () =>
+    {
+        const quriteria = store.getState().searchCriteria;
+        const params = 
+        {
+            features    : quriteria.features,
+            keyword     : quriteria.keyWord,
+            areas       : quriteria.areas,
+        }
+        const result = await requestQueryGraphql( queryListOnsen, `listOnsen`, params );
+        if( result.length === 0 )
+        {
+            return;
+        }
+        state.items = result;
+        update();
+    })
     const params = 
     {
-        style   : Style( styleParams ),
+        style : Style( styleParams ),
+        items : state.items,
     }
+    useMount( () =>
+    {
+        // ロードする処理
+        requestLoadItems();
+    });
     return (
-        <Layout params={params}  />
+        <Page>
+            <Layout params={params}  />
+        </Page> 
     )
 };
-
 export default List;

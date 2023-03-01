@@ -1,16 +1,13 @@
 import React, { useCallback } from "react";
 import { css } from "@emotion/react";
-import Header from "../components/common/header";
-import Page from "./page";
+import { REGIONS_LIST } from "../../misc/const";
 import { Rating, TextArea } from 'semantic-ui-react'
-import InputBox from "../components/common/input-box";
-import RadioButton from "../components/common/radio-button";
-import { useDropzone } from 'react-dropzone';
+import { useLocalState } from "../../hook/use-local-state";
+import InputBox from "../common/input-box";
+import RadioButton from "../common/radio-button";
 import {useUpdate} from 'react-use';
 import { gql } from "@apollo/client";
-import { REGIONS_LIST, STATUS_OK, UPLOADABLE_MAX_ALL_SIZE } from "../misc/const";
-import { useLocalState } from "../hook/use-local-state";
-import { getMibByte, getMidByte, isUploadableImageMimeType, requestMutateGraphql } from "../misc/utility";
+import { requestMutateGraphql } from "../../misc/utility";
 
 const mutationAddOnsen = gql`
     mutation addOnsen ($params: String!) {
@@ -30,8 +27,6 @@ const Layout = ( { params } )=>
 {
     return (
         <div css={params.style}>
-            <Header />
-            <div className={`form-area`}>
             <div className={`basic-info`}>
                 <h3 className={`info-title`}>Basic Info</h3>
                 <form className="ui form">
@@ -201,46 +196,20 @@ const Layout = ( { params } )=>
                             <TextArea placeholder='Tell us the reason' style={{ minHeight: 100 }} onChange={ ( e, data ) => params.onChangeReasonOfRating( e, data ) } />
                         </label>
                     </div>
-                    <div className={`image-area`}>
-                        <b>Images</b>
-                        <div { ...params.getRootProps() } className={`drag-area`}>
-                            <input { ...params.getInputProps() }  />
-                            {( params.isDragActive === true && params.images.length === 0 ) &&
-                                <div className={`drag-message`}>
-                                    <p>Drop the files here ...</p>
-                                </div>
-                            }
-                            {( params.isDragActive === false && params.images.length === 0 ) &&
-                                <div className={`drag-message`}>
-                                    <p>Drag 'n' drop some files, or click here to select files. You can add maximum 5 files.</p>
-                                </div>
-                            }
-                            <div>
-                                {params.images.map( ( item, index ) =>
-                                    <p key={index} style={{ marginBottom: 0 }}>・{item}</p>
-                                )}
-                            </div>
-                        </div>
-                    </div>
                 </form>
             </div>
             <div className={`register-button`}>
                 <button onClick={params.onSubmit} className="big ui primary button">Register</button>
             </div>
         </div>
-        </div>
     );
 }
 
 const Style = ( params ) => css`
-    background-color:#f3f3f3;
-    padding-bottom:50px;
 
-    .form-area
-    {
-        height:90%;
-        margin-bottom:50px;    
-    }
+    height:90%;
+    margin-bottom:50px;
+
     .basic-info
     {
         width : 60%;
@@ -250,10 +219,12 @@ const Style = ( params ) => css`
         background: #fff;
         margin-top:50px;
     }
+
     .info-title
     {
         margin-bottom:30px;
     }
+    
     .additional-info
     {
         width : 60%;
@@ -263,21 +234,25 @@ const Style = ( params ) => css`
         background: #fff;
         margin-top:100px;
     }
+
     #first-question-additional
     {
         margin-top:10px;
         margin-bottom:20px;
     }
+
     #second-question-additional
     {
         margin-top:10px;
         margin-bottom:20px;
     }
+
     #third-question-additional
     {
         margin-top:10px;
         margin-bottom:20px;
     }
+
     .rating
     {
         margin-top:5px;
@@ -287,19 +262,7 @@ const Style = ( params ) => css`
     {
         margin-top:10px;
     }
-    .image-area
-    {
-        margin-top:10px;
-    }
-    .drag-area
-    {        
-        height:100px;
-        border: 1px dotted #888;
-    }
-    .drag-message
-    {
-        text-align:center;
-    }
+
     .register-button
     {
         margin-top :50px;
@@ -307,7 +270,7 @@ const Style = ( params ) => css`
     }
 `;
 
-const Register = ( props ) => 
+const Form = ( props ) => 
 {
     const state = useLocalState(
     {
@@ -324,72 +287,8 @@ const Register = ( props ) =>
         availableType  : 0,
         rating         : 0,
         reasonOfRating : ``,
-        images         : [],
-        imagesSize     : 0,
     });
     const update = useUpdate();
-
-    const validateDroppedFile = useCallback( ( acceptedFiles ) =>
-    {
-        if( state.images.length + acceptedFiles.length > 5 )
-        {
-            console.log('枚数オーバー');
-            // 5枚以上は保存できないメッセージを出す
-            return false;
-        }
-        for( const file of acceptedFiles )
-        {
-            console.log(file);
-            if( isUploadableImageMimeType( file.type ) === false )
-            {
-                console.log('形式違い');
-                // 形式が違う旨のメッセージを返す
-                return false;
-            };
-            const fileSizeMib = getMibByte( file.size );
-            if( state.imagesSize +  fileSizeMib > UPLOADABLE_MAX_ALL_SIZE )
-            {
-                console.log('サイズオーバー');
-                // ファイルサイズオーバー
-                return false;
-            }
-            state.imagesSize += fileSizeMib;
-        }
-    }, [ state.images, state.imagesSize  ]);
-
-    const onDrop = useCallback( ( acceptedFiles ) =>
-    {
-        // const validate = validateDroppedFile( acceptedFiles );
-        // if( validate === false )
-        // {
-        //     return;
-        // }
-        for( const file of acceptedFiles )
-        {
-            state.images.push( file.name );
-        }
-        update();
-    }, []);
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-
-    const resetState = useCallback( () =>
-    {
-        state.onsenName      = ``;
-        state.area           = ``;
-        state.postNumber     = 0;
-        state.address1       = ``;
-        state.address2       = ``;
-        state.address3       = ``;
-        state.minimumFee     = 0;
-        state.url            = ``;
-        state.isSauna        = 1;
-        state.tatooStatus    = 1;
-        state.availableType  = 0;
-        state.rating         = 0;
-        state.reasonOfRating = ``;
-        update();
-    }, [ state, update ]);
-
     const onChangeOnsenName = useCallback( ( e, data ) =>
     {
         state.onsenName = data.value;
@@ -426,17 +325,17 @@ const Register = ( props ) =>
     {
         state.isSauna = data.value;
         update();
-    }, [ state, update ]);
+    }, [ state ]);
     const onChangeTatooStatus = useCallback( ( e, data ) =>
     {
         state.tatooStatus = data.value;
         update();
-    }, [ state, update ]);
+    }, [ state ]);
     const onChangeAvailableType = useCallback( ( e, data ) =>
     {
         state.availableType = data.value;
         update();
-    }, [ state, update ]);
+    }, [ state ]);
     const onChangeRating = useCallback( ( e, data ) =>
     {
         state.rating = data.rating;
@@ -448,12 +347,8 @@ const Register = ( props ) =>
     const onSubmit = useCallback( async () =>
     {
         // 書く値のバリデート処理
-        const result = await requestMutateGraphql( mutationAddOnsen, `addOnsen`, state );
-        if( result.status.code === STATUS_OK )
-        {
-        }
-        resetState();
-    }, [ resetState ])
+        const result = await requestMutateGraphql( mutationAddOnsen, state );
+    }, [ state ])
 
     const styleParams=
     {
@@ -475,21 +370,12 @@ const Register = ( props ) =>
         onChangeAvailableType  : onChangeAvailableType,
         onChangeRating         : onChangeRating,
         onChangeReasonOfRating : onChangeReasonOfRating,
-        onDrop                 : onDrop,
         onSubmit               : onSubmit,
         isSauna                : state.isSauna,
         tatooStatus            : state.tatooStatus,
         availableType          : state.availableType,
-        images                 : state.images,
-        getRootProps           : getRootProps,
-        getInputProps          : getInputProps,
-        isDragActive           : isDragActive,
     }
-    return (
-        <Page>
-            <Layout params={params}  />
-        </Page> 
-    )
+    return <Layout params={params} />
 };
 
-export default Register;
+export default Form;

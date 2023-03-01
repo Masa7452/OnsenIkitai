@@ -3,19 +3,19 @@ import { createSlice } from "@reduxjs/toolkit"
 export const criteriaSlice = createSlice({
   name: `criteria`,
   initialState: {
-    prefectures: [],
+    areas      : [],
     features   : [],
     keyWord    : ``,
   },
   reducers: {
-    addPrefecture: ( state, action ) => {
-      console.log('addPrefecture');
-      state.prefectures.push( action.payload );
+    addArea: ( state, action ) => {
+      console.log('addArea');
+      state.areas.push( action.payload );
     },
-    removePrefecture: ( state, action ) => {
-      console.log('removePrefecture');
-      const index = state.prefectures.indexOf( action.payload );
-      state.prefectures.splice( index, 1 );
+    removeArea: ( state, action ) => {
+      console.log('removeArea');
+      const index = state.areas.indexOf( action.payload );
+      state.areas.splice( index, 1 );
     },
     addFeature: ( state, action ) => {
       console.log('addFeature');
@@ -30,6 +30,6 @@ export const criteriaSlice = createSlice({
   }
 })
 
-export const { addPrefecture, removePrefecture, addFeature, removeFeature, updateKeyword } = criteriaSlice.actions
+export const { addArea, removeArea, addFeature, removeFeature, updateKeyword } = criteriaSlice.actions
 
 export default criteriaSlice.reducer

@@ -1,7 +1,7 @@
 export const ActionType = {
-    addPrefecture    : 'addPrefecture',
-    removePrefecture : 'removePrefecture',
-    addFeature       : 'addFeature',
-    removeFeature    : 'removeFeature',
+    addArea       : 'addArea',
+    removeArea    : 'removeArea',
+    addFeature    : 'addFeature',
+    removeFeature : 'removeFeature',
   };
   

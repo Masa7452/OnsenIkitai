@@ -13,7 +13,7 @@ const Layout = ( { params } ) =>
             <div className={`l-content-search`}>
                 <div className={`prefecture`} onClick={ () => { params.setSearchMode( `prefecture` ) }}>
                     <img className={`prefecture-img`} src={ Prefecture } alt="Prefecture" />
-                    <p>Prefecture</p>
+                    <p>Area</p>
                     <Icon name="plus circle" />
                 </div>
                 <div className={`feature`} onClick={ () => { params.setSearchMode( `feature` ) }}>

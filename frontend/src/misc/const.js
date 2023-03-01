@@ -1,4 +1,7 @@
-// Hokkaido_Tohoku
+export const STATUS_OK = 200;
+
+export const UPLOADABLE_MAX_ALL_SIZE = 200; // Mib
+
 export const HOKKAIDO  = { code: 1,  name: `Hokkaido` };
 export const AOMORI    = { code: 2,  name: `Aomori`   };
 export const IWATE     = { code: 3,  name: `Iwate`    };
@@ -59,14 +62,16 @@ export const MIYAZAKI  = { code: 45, name: `Miyazaki` };
 export const KAGOSHIMA = { code: 46, name: `Kagoshima`};
 export const OKINAWA   = { code: 47, name: `Okinawa`  };
 
+export const CHIYODA   = `Chiyoda`;
 
-export const PREFECTURES =
+export const REGIONS =
 [
-    { areas: [ `Hokkaido`, `Tohoku` ]     , prefectures: [ HOKKAIDO, AOMORI, IWATE, MIYAGI, AKITA, YAMAGATA, FUKUSHIMA ] },
-    { areas: [ `Kanto` ]                  , prefectures: [ IBARAKI,  TOCHIGI, GUNMA, SAITAMA, CHIBA, TOKYO,  KANAGAWA ] },
-    { areas: [ `Hokuriku`, `Koshinetsu` ] , prefectures: [ NIIGATA, TOYAMA, ISHIKAWA, FUKUI, YAMANASHI, NAGANO ] },
-    { areas: [ `Tokai` ]                  , prefectures: [ GIFU, SHIZUOKA, AICHI, MIE ] },
-    { areas: [ `Kinki` ]                  , prefectures: [ SHIGA, KYOTO, OSAKA, HYOGO, NARA, WAKAYAMA ] },
-    { areas: [ `Chugoku`, `Shikoku`]      , prefectures: [ TOTTORI, SHIMANE, OKAYAMA, HIROSHIMA, YAMAGUCHI, TOKUSHIMA, KAGAWA, EHIME, KOCHI ] },
-    { areas: [ `Kyushu`, `Okinawa` ]      , prefectures: [ FUKUOKA, SAGA, NAGASAKI, KUMAMOTO, OITA, MIYAZAKI, KAGOSHIMA, OKINAWA ] }
+    { areas: [ `23-Ward` ] , names: [ `Adachi`, `Arakawa`, `Bunkyo`, `Chiyoda`, `Chuo`, `Edogawa`, `Katsushika`, `Itabashi`, `Kita`, `Kouto`, `Meguro`, `Minato`, `Nakano`, `Nerima`, `Ota`, `Setagaya`, `Shinjuku`, `Shinagawa`, `Shibuya`, `Suginami`, `Sumida`, `Taito`, `Toshima` ] },
+    { areas: [ `Others` ]  , names: [ `Akishima`, `Akiruno`, `Chofu`,`Fuchu`,`Fussa`, `Hachioji`, `Hamura`, `Higashikurume`, `Higashimurayama`, `Higashiyamato`, `Hino`, `Inagi`, `Koganei`, `Kodaira`, `Kokubunnji`, `Komae`, `Kiyose`, `Musashimurayama`,`Musashino`, `Mitaka`,  `Machida`, `Nishitokyo`, `Oume`, `Tama`, `Tachikawa` ] },
+]
+
+export const REGIONS_LIST =
+[
+    `Adachi`, `Arakawa`, `Bunkyo`, `Chiyoda`, `Chuo`, `Edogawa`, `Katsushika`, `Itabashi`, `Kita`, `Kouto`, `Meguro`, `Minato`, `Nakano`, `Nerima`, `Ota`, `Setagaya`, `Shinjuku`, `Shinagawa`, `Shibuya`, `Suginami`, `Sumida`, `Taito`, `Toshima`,
+    `Akishima`, `Akiruno`, `Chofu`,`Fuchu`,`Fussa`, `Hachioji`, `Hamura`, `Higashikurume`, `Higashimurayama`, `Higashiyamato`, `Hino`, `Inagi`, `Koganei`, `Kodaira`, `Kokubunnji`, `Komae`, `Kiyose`, `Musashimurayama`,`Musashino`, `Mitaka`,  `Machida`, `Nishitokyo`, `Oume`, `Tama`, `Tachikawa`
 ]

@@ -1,14 +1,12 @@
 import React from "react";
 import { css } from "@emotion/react";
-import Page from "./page";
+import { AuthProvider } from "../misc/auth-conetxt";
 
 const Layout = ( { params } )=> 
 {
     return (
-        <div>
-            <h1>{params.text}</h1>
-            <p>{params.onsenList.name}</p>
-            <p>{params.onsenList.country}</p>
+        <div css={params.style}>
+            {params.child}
         </div>
     );
 }
@@ -16,7 +14,7 @@ const Layout = ( { params } )=>
 const Style = ( params ) => css`
 `;
 
-const Search = ( props ) => 
+const Page = ( props ) => 
 {
     const styleParams=
     {
@@ -25,14 +23,13 @@ const Search = ( props ) =>
     const params = 
     {
         style   : Style( styleParams ),
-        text : props.location.state.text,
-        onsenList : props.location.state.onsenList[ 0 ],
+        child   : props.children,
     }
     return (
-        <Page>
+        <AuthProvider>
             <Layout params={params}  />
-        </Page> 
+        </AuthProvider>
     )
 };
 
-export default Search;
+export default Page;

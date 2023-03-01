@@ -1,6 +1,10 @@
-import React from "react"
-import { Link } from "gatsby";
+import React, { useCallback } from "react"
+import { Link, navigate } from "gatsby";
 import { css } from "@emotion/react";
+import { getAuth, signOut } from "firebase/auth";
+import { useUpdate } from "react-use";
+
+const auth = getAuth();
 
 const Layout = ( { params } ) =>
 {
@@ -10,7 +14,7 @@ const Layout = ( { params } ) =>
         <nav>
             <ul>
               <li>
-                <Link to="" >What is OnsenIkitai？</Link>
+                <Link to="/" >Home</Link>
               </li>
               <li>
                 <Link to="/register" >Register Onsen</Link>
@@ -22,10 +26,21 @@ const Layout = ( { params } ) =>
         <nav>
           <ul>
             <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/about">SignUp</Link>
+              {params.isLogin === true &&
+                 <div className="menu">
+                 <div className="ui simple dropdown item">
+                   Profile
+                   <i className="dropdown icon"></i>
+                   <div className="menu">
+                     <div className="item">Edit profile</div>
+                     <div className="item" onClick={params.onClickLogin}>Logout</div>
+                   </div>
+                 </div>
+               </div> 
+              }
+              {params.isLogin === false &&
+                <div className={`login`} onClick={params.onClickLogin} >Login</div>
+              }
             </li>
           </ul>
         </nav>
@@ -83,18 +98,38 @@ const Style = ( params ) => css`
     {
       color:black;
     }
+    .login
+    {
+      cursor: pointer;
+    }
 `
 
 const Header = ( { props } ) => 
-{  
-    const styleParams=
+{
+  const update = useUpdate();
+
+  const onClickLogin = useCallback( async () =>
+  {
+    if( auth.currentUser === null )
     {
+      navigate( `/login` );
+      return;
     }
-    const params = 
-    {
-        style : Style( styleParams ),
-    }
-    return <Layout params={params}  />
+    await signOut( auth );
+    update();
+  }, []);
+
+  const styleParams=
+  {
+  }
+  const params = 
+  {
+      style         : Style( styleParams ),
+      isLogin       : auth.currentUser !== null,
+      // userIcon      : 
+      onClickLogin  : onClickLogin
+  }
+  return <Layout params={params}  />
 };
 
 export default Header;

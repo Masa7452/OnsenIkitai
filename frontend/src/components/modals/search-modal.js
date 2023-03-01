@@ -2,19 +2,19 @@ import { css } from "@emotion/react";
 import React, { memo } from "react";
 import FeatureModal from "./feature-modal";
 import MapModal from "./map-modal";
-import PrefectureModal from "./prefecture-modal";
+import AreaModal from "./area-modal";
 
 const Layout = ( { params } )=> 
 {
     return (
         <div>
-            {params.mode === `prefecture` &&
-                <PrefectureModal setSearchMode={params.setSearchMode} />}
+            {params.mode === `area` &&
+                <AreaModal setSearchMode={params.setSearchMode} />}
             {params.mode === `feature` &&
                 <FeatureModal setSearchMode={params.setSearchMode} />}
 
-            {params.mode === `map` &&
-                <MapModal setSearchMode={params.setSearchMode} />}
+            {/* {params.mode === `map` &&
+                <MapModal setSearchMode={params.setSearchMode} />} */}
         </div>
     );
 }

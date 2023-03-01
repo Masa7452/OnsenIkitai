@@ -2,8 +2,8 @@ import { css } from "@emotion/react";
 import { navigate } from "gatsby";
 import React, { memo, useState } from "react";
 import { Modal } from "semantic-ui-react";
-import { PREFECTURES } from "../../const";
-import PrefectureModalItems from "./prefecture-model-items";
+import { REGIONS } from "../../misc/const";
+import AreaModalItems from "./area-model-items";
 import store from "../../redux/store";
 
 const Layout = ( { params } )=> 
@@ -14,11 +14,11 @@ const Layout = ( { params } )=>
             open={params.isOpen}
             onClose={() => params.onClose()}
             >
-            <Modal.Header>Select prefecture</Modal.Header>
+            <Modal.Header>Select Area</Modal.Header>
             <div css={params.style}>
                 <div className={`prefecture-modal-body`}>
-                {PREFECTURES.map( ( item, index ) =>
-                    <div key={index} className={`prefecture-modal-item`} >
+                {REGIONS.map( ( item, index ) =>
+                    <div key={ index } className={`prefecture-modal-item`} >
                         <div className={`prefecture-modal-item-head`}>
                             <h3 className={`title-top`}>{item.areas[0]}</h3>
                             {
@@ -26,13 +26,13 @@ const Layout = ( { params } )=>
                                 <h3 className={`title-bottom`}>{item.areas[1]}</h3>
                             }
                         </div>
-                        <PrefectureModalItems items={item.prefectures} />
+                        <AreaModalItems items={item.names} />
                     </div>
                 )}
                 </div>
                 <div className={`prefecture-modal-button`} onClick={params.onClickSearch} >
                     <a className={`prefecture-modal-button-sumbit`} >
-                      <span>このエリアで絞り込む</span>
+                      <span>Search by area</span>
                     </a>
                 </div> 
             </div>
@@ -42,7 +42,6 @@ const Layout = ( { params } )=>
 
 const Style = ( params ) => css`
 
-font-family: Noto Sans Japanese,ヒラギノ角ゴ Pro W3,Hiragino Kaku Gothic Pro,メイリオ,Meiryo,ＭＳ Ｐゴシック,Osaka,sans-serif;
 height: 80vh;
 
 .prefecture-modal-button{
@@ -98,9 +97,8 @@ height: 80vh;
 
 `;
 
-const PrefectureModal = memo(( props ) => 
+const AreaModal = memo(( props ) => 
 {
-    console.log('PrefectureModalレンダリング');
     const [ isOpen, setIsOpen ] = useState( true );
 
     const onClose = () => 
@@ -111,9 +109,7 @@ const PrefectureModal = memo(( props ) =>
 
     const onClickSearch = () =>
     {
-        console.log('検索ボタン押下');
         const data = store.getState();
-        console.log(data);
         navigate(`/list`);
     }
 
@@ -131,4 +127,4 @@ const PrefectureModal = memo(( props ) =>
     return <Layout params={params} />
 });
 
-export default PrefectureModal;
+export default AreaModal;

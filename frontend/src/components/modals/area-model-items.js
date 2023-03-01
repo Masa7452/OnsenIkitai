@@ -2,16 +2,16 @@ import React from "react";
 import { css } from "@emotion/react";
 import { useLocalState } from "../../hook/use-local-state";
 import store from "../../redux/store";
-import { addPrefecture, removePrefecture } from "../../redux/reducer/search-criteria";
+import { addArea, removeArea } from "../../redux/reducer/search-criteria";
 
 const Layout = ( { params } ) => 
 {
     return (
         <div css={params.style}>
-            {params.items.map( ( data, index ) =>
+            {params.items.map( ( name, index ) =>
                 <div key={index} className={`prefecture-checkbox`}>
-                    <input id={`lb_area_${data.code}`} name='prefecture' type='checkbox' value={data.code} onChange={params.onChange}></input>
-                    <label htmlFor={`lb_area_${data.code}`}>{data.name}</label>
+                    <input id={`lb_area_${index}`} name='prefecture' type='checkbox' value={name} onChange={params.onChange}></input>
+                    <label htmlFor={`lb_area_${index}`}>{name}</label>
                 </div>
             )}
         </div>
@@ -30,7 +30,7 @@ flex-basis: 85%;
     display: flex;
     margin: 15px 0 0;
     min-height: 30px;
-    flex-basis: 20%;
+    flex-basis: 33.33333%;
 
     input[type='checkbox']
     {
@@ -83,7 +83,7 @@ flex-basis: 85%;
 }
 `;
 
-const PrefectureModalItems = ( props ) => 
+const AreaModalItems = ( props ) => 
 {
     const state = useLocalState
     ({
@@ -93,14 +93,14 @@ const PrefectureModalItems = ( props ) =>
     const onChange = ( e ) =>
     {
         const data = store.getState();
-        const index = data.searchCriteria.prefectures.indexOf( e.target.value );
+        const index = data.searchCriteria.areas.indexOf( e.target.value );
         if( index === -1 )
         {
-            store.dispatch(addPrefecture( e.target.value ));
+            store.dispatch( addArea( e.target.value ) );
         }
         else
         {
-            store.dispatch(removePrefecture( e.target.value ));
+            store.dispatch(removeArea( e.target.value ));
         }
     }
     const styleParams =
@@ -115,4 +115,4 @@ const PrefectureModalItems = ( props ) =>
     return <Layout params={params}  />
 };
 
-export default PrefectureModalItems;
+export default AreaModalItems;
